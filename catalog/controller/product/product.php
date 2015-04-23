@@ -706,4 +706,8 @@ class ControllerProductProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+        
+        public function card() {
+            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/product_card.tpl'));
+        }
 }
