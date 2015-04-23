@@ -71,6 +71,14 @@ class ControllerModuleFeatured extends Controller {
 					);
 				}
 			}
+                        $data['cards'] = '<div class="row">';
+                        foreach ($data['products'] as $data['product']) {
+                            $data['cards'] .= '<div class="col l4 m6 s12">';
+                            $data['cards'] .= $this->load->view($this->config->get('config_template'). '/template/product/product_card.tpl', $data);
+                            $data['cards'] .= '</div>';
+                        }
+                        $data['cards'] .= '</div>';
+                        
 		}
 
 		if ($data['products']) {

@@ -257,6 +257,10 @@ class ControllerProductSearch extends Controller {
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
 				);
 			}
+                        $data['cards'] = '';
+                        foreach ($data['products'] as $data['product']) {
+                            $data['cards'] .= $this->load->view($this->config->get('config_template'). '/template/product/product_card.tpl', $data);
+                        }
 
 			$url = '';
 
