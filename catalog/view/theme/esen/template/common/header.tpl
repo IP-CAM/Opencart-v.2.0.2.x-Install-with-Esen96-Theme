@@ -30,11 +30,13 @@
 
         <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+        <link href="catalog/view/theme/esen/stylesheet/stylesheet.css" rel="stylesheet">
         <!--<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">-->
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+        <script src="catalog/view/javascript/material.js" type="text/javascript"></script>
         <?php foreach ($scripts as $script) { ?>
         <script src="<?php echo $script; ?>" type="text/javascript"></script>
         <?php } ?>
@@ -42,10 +44,85 @@
     </head>
     <body>
         <header>
-            <nav class="top-nav">
+            <nav class="top-nav amber darken-4">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <div class="container">
-                    
+                    <a href="#" class="brand-logo">Есен96</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="<?php echo $contact; ?>">
+                                <i class="fa fa-phone"></i><span><?php echo $telephone; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class='dropdown-button' data-activates='account-dropdown'>
+                                <i class="fa fa-user"></i><span><?php echo $text_account; ?></span>
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>">
+                                <i class="fa fa-heart"></i> <span><?php echo $text_wishlist; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>">
+                                <i class="fa fa-shopping-cart"></i> <span><?php echo $text_shopping_cart; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>">
+                                <i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id='account-dropdown' class='dropdown-content'>
+                        <?php if ($logged) { ?>
+                        <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+                        <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+                        <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+                        <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+                        <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+                        <?php } else { ?>
+                        <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
+                        <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </nav>
+            <div class='row'>
+
+            </div>
+            <?php if ($categories) { ?>
+            <ul id="slide-out" class="side-nav fixed">
+                <li class="logo valign">
+                    <a href="<?php echo $home; ?>" class="brand-logo">
+                        <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
+                    </a>
+                </li>
+                <?php foreach ($categories as $category) { ?>
+                <?php if ($category['children'] && !empty($category['children'])) { ?>
+                <li>
+                    <ul class="collapsible expandable">
+                        <li>
+                            <a class="collapsible-header"><?php echo $category['name']; ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                                        <?php foreach ($children as $child) { ?>
+                                        <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <?php } else { ?>
+                <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php } ?>
+                <?php } ?>
+            </ul>
+            <?php } ?>
         </header>
+        <div class="row"></div>
         <main>

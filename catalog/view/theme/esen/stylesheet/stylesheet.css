@@ -1,0 +1,20 @@
+.collapsible-header {
+    height: 64px !important;
+    line-height: 64px !important;
+}
+
+.side-nav li {
+    padding: 0 !important;
+    vertical-align: middle;
+}
+
+.side-nav .collapsible-header {
+    margin: 0 !important;
+}
+
+.logo img {
+    max-width: 100%;
+    margin: auto;
+    vertical-align: middle; 
+    display: inline-block;
+}
