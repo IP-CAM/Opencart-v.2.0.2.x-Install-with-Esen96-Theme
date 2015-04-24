@@ -44,57 +44,54 @@
     </head>
     <body>
         <header>
-            <nav class="top-nav amber darken-4">
-                <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-                <div class="container">
-                    <a href="#" class="brand-logo">Есен96</a>
-                    <ul class="right hide-on-med-and-down">
-                        <li>
-                            <a href="<?php echo $contact; ?>">
-                                <i class="fa fa-phone"></i><span><?php echo $telephone; ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class='dropdown-button' data-activates='account-dropdown'>
-                                <i class="fa fa-user"></i><span><?php echo $text_account; ?></span>
-                            </a>                            
-                        </li>
-                        <li>
-                            <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>">
-                                <i class="fa fa-heart"></i> <span><?php echo $text_wishlist; ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>">
-                                <i class="fa fa-shopping-cart"></i> <span><?php echo $text_shopping_cart; ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>">
-                                <i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul id='account-dropdown' class='dropdown-content'>
-                        <?php if ($logged) { ?>
-                        <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-                        <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-                        <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-                        <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-                        <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-                        <?php } else { ?>
-                        <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-                        <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </nav>
+                <nav class="amber darken-4">
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                            <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a href="<?php echo $contact; ?>">
+                                    <i class="mdi-communication-phone small left"></i><span class=""><?php echo $telephone; ?></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class='dropdown-button' data-activates='account-dropdown'>
+                                    <i class="mdi-social-person small left"></i><span><?php echo $text_account; ?></span>
+                                </a>                            
+                            </li>
+                            <li>
+                                <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>">
+                                    <i class="mdi-action-favorite small left"></i><span><?php echo $text_wishlist; ?></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>">
+                                    <i class="mdi-action-shopping-cart small left"></i> <span><?php echo $text_shopping_cart; ?></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>">
+                                    <i class="mdi-action-exit-to-app small left"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul id='account-dropdown' class='dropdown-content'>
+                            <?php if ($logged) { ?>
+                            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+                            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+                            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+                            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+                            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+                            <?php } else { ?>
+                            <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
+                            <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                </nav>
             <div class='row'>
 
             </div>
             <?php if ($categories) { ?>
             <ul id="slide-out" class="side-nav fixed">
-                <li class="logo valign">
+                <li class="logo waves-effect waves-orange">
                     <a href="<?php echo $home; ?>" class="brand-logo">
                         <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
                     </a>
@@ -104,12 +101,12 @@
                 <li>
                     <ul class="collapsible expandable">
                         <li>
-                            <a class="collapsible-header"><?php echo $category['name']; ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
+                            <a class="collapsible-header waves-effect waves-orange"><?php echo $category['name']; ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
                                         <?php foreach ($children as $child) { ?>
-                                        <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                                        <li class="waves-effect waves-orange"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
                                         <?php } ?>
                                     <?php } ?>
                                 </ul>
@@ -118,7 +115,7 @@
                     </ul>
                 </li>
                 <?php } else { ?>
-                <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                <li class="waves-effect waves-orange"><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
                 <?php } ?>
                 <?php } ?>
             </ul>

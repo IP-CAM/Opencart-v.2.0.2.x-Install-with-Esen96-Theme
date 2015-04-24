@@ -3,10 +3,18 @@
     line-height: 64px !important;
 }
 
+.side-nav > li {
+    font-weight: bold;
+}
+
 .side-nav li {
     padding: 0 !important;
     vertical-align: middle;
 }
+a {
+    font-size: 0.8rem !important;
+}
+
 
 .side-nav .collapsible-header {
     margin: 0 !important;
@@ -18,3 +26,26 @@
     vertical-align: middle; 
     display: inline-block;
 }
+
+header, main, footer {
+    padding-left: 0;
+}
+
+.side-nav li:hover, .side-nav li.active {
+    background: white;
+}
+
+.side-nav .waves-effect {
+    display: block;
+}
+
+@media only screen and (min-width: 993px) {
+    header, main, footer {
+        padding-left: 240px;
+    }
+    
+    .container {
+      width: 85% !important;
+    }
+}
+
